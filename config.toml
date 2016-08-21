@@ -1,0 +1,3 @@
+baseurl = "http://blog.golangvn.org/"
+languageCode = "en-us"
+title = "Golangvn blog"
