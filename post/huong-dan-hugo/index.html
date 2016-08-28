@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Hướng dẫn dùng Hugo để viết blog</title>
+
+  <meta name="author" content="" />
+  
+  
+
+  <meta name="generator" content="Hugo 0.15" />
+
+  <link rel="alternate" href="http://blog.golangvn.org/index.xml" type="application/rss+xml" title="Golangvn blog">
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://blog.golangvn.org/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://blog.golangvn.org/css/main.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="http://blog.golangvn.org/css/pygment_highlights.css" />
+  
+  
+  <meta property="og:title" content="Hướng dẫn dùng Hugo để viết blog" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="/" />
+  <meta property="og:image" content="" />
+  
+</head>
+
+
+  <body>
+
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="http://blog.golangvn.org/">Golangvn blog</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+      
+      </ul>
+    </div>
+
+	<div class="avatar-container">
+	  <div class="avatar-img-border">
+      
+	  </div>
+	</div>
+
+  </div>
+</nav>
+
+
+    <div role="main" class="container main-content">
+
+      
+        
+
+
+
+
+
+<header class="header-section ">
+
+<div class="intro-header no-img">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <div class="post-heading">
+          <h1>Hướng dẫn dùng Hugo để viết blog</h1>
+      
+      
+      
+      <span class="post-meta">Posted on August 21, 2016</span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</header>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+          
+
+<p>Trong bài viết này mình sẽ hướng dẫn sử dụng  Hugo để viết bài. Các bạn cũng sử dụng Hugo để viết bài cho Golangvn. Mình hoan nghênh mọi sự đóng góp từ các bạn. Các bạn có thể sử dụng chức năng pull requests của Github, mình sẽ merge và phản hồi sớm nhất.</p>
+
+<h2 id="bước-1-cài-đặt-hugo:d8f566c6a1cc7e21899357840806ba67">Bước 1: Cài đặt Hugo</h2>
+
+<p>Có nhiều cách để cài đặt Hugo. Cách đơn giản nhất là sử dụng sự hỗ trợ có sẵn của hệ điều hành bạn đang sử dụng:</p>
+
+<ul>
+<li><a href="https://gohugo.io/tutorials/installing-on-mac/">Cài đặt Hugo trên OS X</a></li>
+<li><a href="https://gohugo.io/tutorials/installing-on-windows/">Cài đặt Hugo trên Windown</a></li>
+</ul>
+
+<p>Nếu bạn sử dụng Linux có thể tìm kiếm với Package Manager. Trên máy mình sử dụng Arch, vì vậy có thể sử dụng sự hỗ trợ từ <code>yaourt</code></p>
+
+<pre><code>$ yaourt -Ss hugo
+aur/hugo 0.16-1 (40) (2.46)
+    Fast and Flexible Static Site Generator in Go
+aur/hugo-git v0.15.r3.g26af48a-1 (1) (0.05)
+    Fast and Flexible Static Site Generator in Go
+aur/hugo-src 0.16-2 (1) (0.58)
+    Fast and Flexible Static Site Generator in Go — built from source.
+</code></pre>
+
+<p>Cá nhân mình chọn cách cài đặt từ mã nguồn của Hugo từ Github. Bạn chỉ cần có Git và Go ở trên máy và sử dụng lệnh <code>go get</code></p>
+
+<pre><code>$ go get -v github.com/spf13/hugo
+</code></pre>
+
+<p>Khi đã cài đặt xong bạn có thể chạy thử lệnh <code>hugo</code></p>
+
+<pre><code>$ hugo version
+Hugo Static Site Generator v0.17-DEV BuildDate: 2016-08-21T00:28:22+07:00
+</code></pre>
+
+<h2 id="bước-2-tạo-blog:d8f566c6a1cc7e21899357840806ba67">Bước 2: Tạo blog</h2>
+
+<blockquote>
+<p>Nếu bạn muốn đóng góp trực tiếp bài viết lên Golangvn, bạn có thể bỏ qua bước 2 và 3. Bạn chỉ cần clone <a href="https://github.com/golangvn/blog">blog trên Github</a> và chuyển qua bước 4.</p>
+</blockquote>
+
+<p>Khi Hugo đã được cài đặt trên máy của bạn thì mọi chuyện còn lại rất đơn giản. Để tạo một blog mới, bạn sử dụng lệnh <code>hugo new site</code>. Ví dụ mình tạo một Hugo site <code>blog</code>, mình chạy lệnh</p>
+
+<pre><code>$ hugo new site blog
+</code></pre>
+
+<p>Di chuyển vào thư mục <code>blog</code> vừa mới tạo, bạn sẽ thấy Hugo tạo cho chúng ta những tập tin cơ bản</p>
+
+<pre><code>.
+|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- layouts
+|-- themes
+`-- static
+
+6 directories, 1 file
+</code></pre>
+
+<h2 id="bước-3-theme:d8f566c6a1cc7e21899357840806ba67">Bước 3: Theme</h2>
+
+<p>Bước tiếp theo chúng ta chúng ta cần một <code>Hugo theme</code> để thể hiện blog của mình. Bạn có thể chọn một theme trên <a href="https://themes.gohugo.io/">Hugo themes</a>. Cộng đồng Hugo có đóng góp rất nhiều theme đẹp và miễn phí. Ở đây mình chọn theme <a href="http://themes.gohugo.io/beautifulhugo/">Beautiful Hugo</a>.</p>
+
+<p>Di chuyển vào thư mục themes</p>
+
+<pre><code>$ cd themes/
+</code></pre>
+
+<p>Clone theme</p>
+
+<pre><code>$ git clone https://github.com/halogenica/Hugo-BeautifulHugo.git beautifulhugo
+</code></pre>
+
+<p>Trở lại thư mục blog của bạn</p>
+
+<pre><code>$ cd ..
+</code></pre>
+
+<h2 id="bước-4-tạo-bài-viết-và-viết-bài:d8f566c6a1cc7e21899357840806ba67">Bước 4: Tạo bài viết và viết bài</h2>
+
+<p>Để tạo một bài viết, chúng ta sử dụng lệnh <code>hugo new post/tên-bài-viết.md</code>
+Ví dụ:</p>
+
+<pre><code>$ hugo new post/huong-dan-hugo.md
+</code></pre>
+
+<p>Hugo sẽ tạo ra tập tin <code>huong-dan-hugo.md</code></p>
+
+<pre><code>content
+`-- post
+    `-- huong-dan-hugo.md
+
+1 directory, 1 file
+</code></pre>
+
+<p>Với nội dung:</p>
+
+<pre><code>+++
+date = &quot;2016-08-21T11:26:34+07:00&quot;
+draft = true
+title = &quot;huong dan hugo&quot;
+
++++
+
+</code></pre>
+
+<p>Bạn có thể sửa tiêu đề và viết vài dòng sau dấu <code>+++</code></p>
+
+<h2 id="bước-5-xem-thành-quả-của-mình:d8f566c6a1cc7e21899357840806ba67">Bước 5: Xem thành quả của mình</h2>
+
+<p>Để xem bài viết sẽ được thể hiện ra sao hãy dùng lệnh <code>hugo serve</code></p>
+
+<pre><code>$ hugo serve --theme=beautifulhugo --buildDrafts
+</code></pre>
+
+<p>Vì bài viết của bạn đang là bản nháp(<code>draft = true</code>) nên chúng ta cần thêm <code>--buildDrafts</code> vào câu lệnh.</p>
+
+<p>Bây giờ mở trình duyệt vào xem blog của bạn với link <a href="http://localhost:1313/">http://localhost:1313/</a></p>
+
+<h2 id="bước-6-xuất-bản-bài-viết:d8f566c6a1cc7e21899357840806ba67">Bước 6: Xuất bản bài viết</h2>
+
+<p>Để chia sẻ bài viết bạn có thể sử dụng Github, Bitbucket hoặc có thể tải lên server của riêng bạn. Ở đây mình sử dụng Github với <a href="https://pages.github.com/">Github Pages</a></p>
+
+<p>Bạn có thể làm theo hướng dẫn trên trang của Hugo: <a href="https://gohugo.io/tutorials/github-pages-blog/">Hosting on GitHub Pages</a></p>
+
+<p>Và trang bạn đang đọc chính là thành quả của bài viết này.</p>
+
+      </article>
+
+      <ul class="pager blog-pager">
+        
+        
+        <li class="next">
+          <a href="http://blog.golangvn.org/post/go-var_dump-print_r/" data-toggle="tooltip" data-placement="top" title="Go: var_dump(), print_r()">Next Post &rarr;</a>
+        </li>
+        
+      </ul>
+
+      
+
+    </div>
+  </div>
+</div>
+
+      
+
+    </div>
+
+    <footer>
+  <div class="container beautiful-jekyll-footer">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+          
+		      
+		      
+		      
+	    	  
+          
+          
+
+    		  <li>
+      			<a href="http://blog.golangvn.org/index.xml" title="RSS">
+      			  <span class="fa-stack fa-lg">
+        				<i class="fa fa-circle fa-stack-2x"></i>
+        				<i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+      			  </span>
+      			</a>
+    		  </li>		
+
+        </ul>
+        <p class="copyright text-muted">
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  2016
+    		  
+    		  
+    		  &nbsp;&bull;&nbsp;
+    		  <a href="http://blog.golangvn.org/">Golangvn blog</a>
+    		  
+  	    </p>
+  	        
+    		<p class="theme-by text-muted">
+    		  Theme by
+    		  <a href="http://deanattali.com/beautiful-jekyll/">beautiful-jekyll</a>
+    		</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="http://blog.golangvn.org/js/jquery-1.11.2.min.js"></script>
+<script src="http://blog.golangvn.org/js/bootstrap.min.js"></script>
+<script src="http://blog.golangvn.org/js/main.js"></script>
+
+
+
+  </body>
+</html>

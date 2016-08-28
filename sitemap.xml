@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://blog.golangvn.org/</loc>
+    <lastmod>2016-08-28T23:29:31+07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.golangvn.org/post/go-var_dump-print_r/</loc>
+    <lastmod>2016-08-28T23:29:31+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://blog.golangvn.org/post/huong-dan-hugo/</loc>
+    <lastmod>2016-08-21T11:26:34+07:00</lastmod>
+  </url>
+  
+</urlset>

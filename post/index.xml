@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Golangvn blog</title>
+    <link>http://blog.golangvn.org/post/</link>
+    <description>Recent content in Posts on Golangvn blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Aug 2016 23:29:31 +0700</lastBuildDate>
+    <atom:link href="http://blog.golangvn.org/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Go: var_dump(), print_r()</title>
+      <link>http://blog.golangvn.org/post/go-var_dump-print_r/</link>
+      <pubDate>Sun, 28 Aug 2016 23:29:31 +0700</pubDate>
+      
+      <guid>http://blog.golangvn.org/post/go-var_dump-print_r/</guid>
+      <description>&lt;p&gt;Chào các bạn, chắc nhiều bạn cũng giống mình, chuyển sang Go từ PHP. Vì vậy nhiều bạn sẽ thắc mắc về hàm huyền thoại &lt;code&gt;var_dump&lt;/code&gt; của PHP trong Go thì như thế nào.&lt;/p&gt;
+
+&lt;p&gt;Trong Go không có hàm &lt;code&gt;var_dump&lt;/code&gt; hay &lt;code&gt;print_r&lt;/code&gt; giống PHP. Nhưng các bạn có thể dùng hàm &lt;code&gt;Printf&lt;/code&gt; trong gói &lt;code&gt;fmt&lt;/code&gt; của Go.&lt;/p&gt;
+
+&lt;p&gt;Cách dùng: &lt;code&gt;fmt.Printf(&amp;quot;%v&amp;quot;, whatever)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Ngoài &lt;code&gt;%v&lt;/code&gt; cũng có thể sử dụng &lt;code&gt;%+v&lt;/code&gt; để thêm các trường khi sử dụng với &lt;code&gt;struct&lt;/code&gt;, còn nếu muốn chi tiết hơn có thể sự dụng &lt;code&gt;%#v&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Ví dụ: &lt;a href=&#34;https://play.golang.org/p/RjbTnMHgIb&#34;&gt;https://play.golang.org/p/RjbTnMHgIb&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-go&#34;&gt;package main
+
+import &amp;quot;fmt&amp;quot;
+
+func main() {
+        a := struct {
+                Numbers []int
+        }{
+                Numbers: []int{1, 2, 3},
+        }
+        fmt.Printf(&amp;quot;%v \n&amp;quot;, a)
+        fmt.Printf(&amp;quot;%+v \n&amp;quot;, a)
+        fmt.Printf(&amp;quot;%#v \n&amp;quot;, a)
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;script type=&#34;text/javascript&#34; src=&#34;https://asciinema.org/a/eyavqioqn0siywubetvjeegz8.js&#34; id=&#34;asciicast-eyavqioqn0siywubetvjeegz8&#34; async&gt;&lt;/script&gt;
+
+&lt;p&gt;Hy vọng bài viết giúp ích được cho các bạn.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Hướng dẫn dùng Hugo để viết blog</title>
+      <link>http://blog.golangvn.org/post/huong-dan-hugo/</link>
+      <pubDate>Sun, 21 Aug 2016 11:26:34 +0700</pubDate>
+      
+      <guid>http://blog.golangvn.org/post/huong-dan-hugo/</guid>
+      <description>
+
+&lt;p&gt;Trong bài viết này mình sẽ hướng dẫn sử dụng  Hugo để viết bài. Các bạn cũng sử dụng Hugo để viết bài cho Golangvn. Mình hoan nghênh mọi sự đóng góp từ các bạn. Các bạn có thể sử dụng chức năng pull requests của Github, mình sẽ merge và phản hồi sớm nhất.&lt;/p&gt;
+
+&lt;h2 id=&#34;bước-1-cài-đặt-hugo:d8f566c6a1cc7e21899357840806ba67&#34;&gt;Bước 1: Cài đặt Hugo&lt;/h2&gt;
+
+&lt;p&gt;Có nhiều cách để cài đặt Hugo. Cách đơn giản nhất là sử dụng sự hỗ trợ có sẵn của hệ điều hành bạn đang sử dụng:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/tutorials/installing-on-mac/&#34;&gt;Cài đặt Hugo trên OS X&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/tutorials/installing-on-windows/&#34;&gt;Cài đặt Hugo trên Windown&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Nếu bạn sử dụng Linux có thể tìm kiếm với Package Manager. Trên máy mình sử dụng Arch, vì vậy có thể sử dụng sự hỗ trợ từ &lt;code&gt;yaourt&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ yaourt -Ss hugo
+aur/hugo 0.16-1 (40) (2.46)
+    Fast and Flexible Static Site Generator in Go
+aur/hugo-git v0.15.r3.g26af48a-1 (1) (0.05)
+    Fast and Flexible Static Site Generator in Go
+aur/hugo-src 0.16-2 (1) (0.58)
+    Fast and Flexible Static Site Generator in Go — built from source.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Cá nhân mình chọn cách cài đặt từ mã nguồn của Hugo từ Github. Bạn chỉ cần có Git và Go ở trên máy và sử dụng lệnh &lt;code&gt;go get&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ go get -v github.com/spf13/hugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Khi đã cài đặt xong bạn có thể chạy thử lệnh &lt;code&gt;hugo&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo version
+Hugo Static Site Generator v0.17-DEV BuildDate: 2016-08-21T00:28:22+07:00
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;bước-2-tạo-blog:d8f566c6a1cc7e21899357840806ba67&#34;&gt;Bước 2: Tạo blog&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Nếu bạn muốn đóng góp trực tiếp bài viết lên Golangvn, bạn có thể bỏ qua bước 2 và 3. Bạn chỉ cần clone &lt;a href=&#34;https://github.com/golangvn/blog&#34;&gt;blog trên Github&lt;/a&gt; và chuyển qua bước 4.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Khi Hugo đã được cài đặt trên máy của bạn thì mọi chuyện còn lại rất đơn giản. Để tạo một blog mới, bạn sử dụng lệnh &lt;code&gt;hugo new site&lt;/code&gt;. Ví dụ mình tạo một Hugo site &lt;code&gt;blog&lt;/code&gt;, mình chạy lệnh&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo new site blog
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Di chuyển vào thư mục &lt;code&gt;blog&lt;/code&gt; vừa mới tạo, bạn sẽ thấy Hugo tạo cho chúng ta những tập tin cơ bản&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.
+|-- archetypes
+|-- config.toml
+|-- content
+|-- data
+|-- layouts
+|-- themes
+`-- static
+
+6 directories, 1 file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;bước-3-theme:d8f566c6a1cc7e21899357840806ba67&#34;&gt;Bước 3: Theme&lt;/h2&gt;
+
+&lt;p&gt;Bước tiếp theo chúng ta chúng ta cần một &lt;code&gt;Hugo theme&lt;/code&gt; để thể hiện blog của mình. Bạn có thể chọn một theme trên &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;Hugo themes&lt;/a&gt;. Cộng đồng Hugo có đóng góp rất nhiều theme đẹp và miễn phí. Ở đây mình chọn theme &lt;a href=&#34;http://themes.gohugo.io/beautifulhugo/&#34;&gt;Beautiful Hugo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Di chuyển vào thư mục themes&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd themes/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Clone theme&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ git clone https://github.com/halogenica/Hugo-BeautifulHugo.git beautifulhugo
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Trở lại thư mục blog của bạn&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd ..
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;bước-4-tạo-bài-viết-và-viết-bài:d8f566c6a1cc7e21899357840806ba67&#34;&gt;Bước 4: Tạo bài viết và viết bài&lt;/h2&gt;
+
+&lt;p&gt;Để tạo một bài viết, chúng ta sử dụng lệnh &lt;code&gt;hugo new post/tên-bài-viết.md&lt;/code&gt;
+Ví dụ:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo new post/huong-dan-hugo.md
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hugo sẽ tạo ra tập tin &lt;code&gt;huong-dan-hugo.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;content
+`-- post
+    `-- huong-dan-hugo.md
+
+1 directory, 1 file
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Với nội dung:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;+++
+date = &amp;quot;2016-08-21T11:26:34+07:00&amp;quot;
+draft = true
+title = &amp;quot;huong dan hugo&amp;quot;
+
++++
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Bạn có thể sửa tiêu đề và viết vài dòng sau dấu &lt;code&gt;+++&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;bước-5-xem-thành-quả-của-mình:d8f566c6a1cc7e21899357840806ba67&#34;&gt;Bước 5: Xem thành quả của mình&lt;/h2&gt;
+
+&lt;p&gt;Để xem bài viết sẽ được thể hiện ra sao hãy dùng lệnh &lt;code&gt;hugo serve&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ hugo serve --theme=beautifulhugo --buildDrafts
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Vì bài viết của bạn đang là bản nháp(&lt;code&gt;draft = true&lt;/code&gt;) nên chúng ta cần thêm &lt;code&gt;--buildDrafts&lt;/code&gt; vào câu lệnh.&lt;/p&gt;
+
+&lt;p&gt;Bây giờ mở trình duyệt vào xem blog của bạn với link &lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;bước-6-xuất-bản-bài-viết:d8f566c6a1cc7e21899357840806ba67&#34;&gt;Bước 6: Xuất bản bài viết&lt;/h2&gt;
+
+&lt;p&gt;Để chia sẻ bài viết bạn có thể sử dụng Github, Bitbucket hoặc có thể tải lên server của riêng bạn. Ở đây mình sử dụng Github với &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Pages&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Bạn có thể làm theo hướng dẫn trên trang của Hugo: &lt;a href=&#34;https://gohugo.io/tutorials/github-pages-blog/&#34;&gt;Hosting on GitHub Pages&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Và trang bạn đang đọc chính là thành quả của bài viết này.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
