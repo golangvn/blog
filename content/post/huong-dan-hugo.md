@@ -6,6 +6,8 @@ title = "Hướng dẫn dùng Hugo để viết blog"
 
 Trong bài viết này mình sẽ hướng dẫn sử dụng  Hugo để viết bài. Các bạn cũng sử dụng Hugo để viết bài cho Golangvn. Mình hoan nghênh mọi sự đóng góp từ các bạn. Các bạn có thể sử dụng chức năng pull requests của Github, mình sẽ merge và phản hồi sớm nhất.
 
+<!--more-->
+
 ## Bước 1: Cài đặt Hugo
 Có nhiều cách để cài đặt Hugo. Cách đơn giản nhất là sử dụng sự hỗ trợ có sẵn của hệ điều hành bạn đang sử dụng:
 
